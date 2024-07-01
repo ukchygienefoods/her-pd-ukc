@@ -64,7 +64,7 @@ app.post("/webhook",(req,res)=>{ //i want some
                    data:{
                     messaging_product: "whatsapp",
                     recipient_type: "individual",
-                    to: "{{Recipient-Phone-Number}}",
+                    to: from,
                     type: "template",
                     template: {
                         name: "te_send_menu_request",
