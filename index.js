@@ -62,12 +62,17 @@ app.post("/webhook",(req,res)=>{ //i want some
                    method:"POST",
                    url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
                    data:{
-                       messaging_product:"whatsapp",
-                       to:from,
-                       text:{
-                           body: responseMessage
-                       }
-                   },
+                    messaging_product: "whatsapp",
+                    recipient_type: "individual",
+                    to: "{{Recipient-Phone-Number}}",
+                    type: "template",
+                    template: {
+                        name: "te_send_menu_request",
+                        language: {
+                            code: "en_US"
+                        }
+                    }
+                },
                    headers:{
                        "Content-Type":"application/json"
                    }
@@ -86,3 +91,6 @@ app.post("/webhook",(req,res)=>{ //i want some
 app.get("/",(req,res)=>{
     res.status(200).send("hello this is webhook setup");
 });
+
+
+
